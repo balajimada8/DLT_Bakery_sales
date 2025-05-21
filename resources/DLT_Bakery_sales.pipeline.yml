@@ -1,0 +1,14 @@
+# The main pipeline for DLT_Bakery_sales
+resources:
+  pipelines:
+    DLT_Bakery_sales_pipeline:
+      name: DLT_Bakery_sales_pipeline
+      serverless: true
+      catalog: DLT_Bakery_sales_${bundle.target}
+      schema: bronze
+      libraries:
+        - notebook:
+            path: ../src/dlt_pipeline.ipynb
+
+      configuration:
+        bundle.sourcePath: ${workspace.file_path}/src
